@@ -8,7 +8,7 @@ import logo from "../assets/img/clothes_logo.png";
 
 export default function FooterCpt() {
   return (
-    <Footer container>
+    <Footer container className="border border-pink-100 mt-10">
       <div className="w-full text-center">
         <div className="w-full justify-between items-center sm:flex sm:items-center sm:justify-between">
           <Footer.Brand alt="Shein x Shoppink Logo" href="/" src={logo} />

@@ -11,11 +11,12 @@ export default function Navigation() {
     <Navbar
       fluid
       rounded
+      className="mb-8 border-b-2 border-pink-100"
     >
       <Navbar.Brand
         href="/"
       >
-        <img src={logo} alt="Shein x Shoppink Logo" className="w-56" />
+        <img src={logo} alt="Shein x Shoppink Logo" className="w-40  sm:w-56" />
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>

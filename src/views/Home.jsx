@@ -16,7 +16,7 @@ function Home() {
   return (
     <div>
       <NavbarCpt />
-      <h1 className="font-bold">Bienvenido, es un gusto verte de nuevo.</h1>
+      <h1 className="font-bold text-xl">Bienvenido, es un gusto verte de nuevo.</h1>
       <p>¡Aprovecha las grandes ofertas que tenemos para ti en este 2023!</p>
 
       <Carousel className="h-32 mt-4 sm:my-7 sm:h-96">

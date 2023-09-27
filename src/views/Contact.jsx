@@ -16,7 +16,7 @@ export default function Contact() {
     <div>
       <NavbarCpt />
       <div className="flex flex-col items-center">
-        <h1 className="font-bold">¡Estamos a tus ordenes, para lo que necesites!</h1>
+        <h1 className="font-bold text-xl">¡Estamos a tus ordenes, para lo que necesites!</h1>
 
         <div className="m-10">
           <form className="flex max-w-md flex-col gap-4">
@@ -49,7 +49,7 @@ export default function Contact() {
                 <p>Acepto recibir publicidad y que me contacten por correo.</p>
               </Label>
             </div>
-            <Button type="submit" onClick={handleContact}>Enviar correo</Button>
+            <Button type="submit" onClick={handleContact} gradientDuoTone="purpleToPink">Enviar correo</Button>
           </form>
         </div>
       </div>
