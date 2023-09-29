@@ -36,7 +36,11 @@ const Colors = () => {
       email: email,
       pass: pass,
       img: imageURL,
-      clothes: [],
+      colors: [],
+      pieces: [],
+      clothes: "",
+      options: "",
+      price: 0
     }
 
     //Seteamos la informacion con su respectiva imagen.

@@ -9,7 +9,10 @@ const UserState = ({ children }) => {
         pass: null,
         img: null,
         colors: [],
-        clothes: []
+        pieces: [],
+        clothes: "",
+        options: "",
+        price: 0
     }
 
     const [state, setState] = useState(initialState)
@@ -24,7 +27,10 @@ const UserState = ({ children }) => {
             pass: state.pass,
             img: state.img,
             colors: state.colors,
+            pieces: state.pieces,
             clothes: state.clothes,
+            options: state.options,
+            price: state.price,
             setData
          }}>
             { children }

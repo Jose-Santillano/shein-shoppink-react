@@ -9,27 +9,23 @@ import NavbarCpt from "../components/NavbarCpt";
 import FooterCpt from "../components/FooterCpt";
 
 //Constants
-import colors from "../constants/colorsData";
-import { useNavigate } from "react-router-dom";
+import pieces from "../constants/piecesData";
 
-const Colors = () => {
-  //Navigate
-  const navigate = useNavigate();
-
-  const [coloresSelected, setColoresSelected] = useState([]);
+const Pieces = () => {
+  const [piecesSelected, setPiecesSelected] = useState([]);
 
   //Context
-  const { email, pass, img, setData } = useContext(UserContext);
+  const { email, pass, img, colors, setData } = useContext(UserContext);
 
   //Funcion para guardar los colores en el estado global.
-  const handleSaveColors = () => {
-    if (coloresSelected.length > 1) {
+  const handleSavePieces = () => {
+    if (piecesSelected.length > 0) {
       const data = {
         email: email,
         pass: pass,
         img: img,
-        colors: coloresSelected,
-        pieces: [],
+        colors: colors,
+        pieces: piecesSelected,
         clothes: "",
         options: "",
         price: 0,
@@ -38,27 +34,25 @@ const Colors = () => {
       setData(data);
       console.log(data);
 
-      alert("Colores guardados.");
-
-      navigate("/pieces");
+      alert("Conjuntos guardados.");
     } else {
-      alert("Debes seleccionar al menos 1 color.");
-      console.log(coloresSelected);
+      alert("Debes seleccionar al menos 1 conjuntos.");
+      console.log(piecesSelected);
     }
   };
 
   //Funcion para actualizar el estado de los colores seleccionados.
   const handleColorSelect = (color) => {
-    const actuallyColors = [...coloresSelected];
+    const actuallyColors = [...piecesSelected];
     if (actuallyColors.includes(color)) {
       actuallyColors.splice(actuallyColors.indexOf(color), 1);
-    } else if (actuallyColors.length < 3) {
+    } else if (actuallyColors.length < 2) {
       actuallyColors.push(color);
     } else {
-      alert("Solo puedes seleccionar 3 colores");
+      alert("Solo puedes seleccionar 2 conjuntos");
     }
-    setColoresSelected(actuallyColors);
-    console.log(coloresSelected);
+    setPiecesSelected(actuallyColors);
+    console.log(piecesSelected);
   };
 
   return (
@@ -66,31 +60,32 @@ const Colors = () => {
       <NavbarCpt />
       <div className="flex flex-col items-center">
         <h1 className="font-bold text-xl">
-          ¡Elige tus colores favoritos para crear el mejor outfit!
+          ¡Elige tus conjuntos favoritos para vestir a la moda!
         </h1>
         <p>Sesión iniciada con: {email}</p>
 
         <div className="flex flex-wrap text-center justify-center align-center gap-5 my-5">
-          {colors.map((color) => {
+          {pieces.map((pieces) => {
             return (
-              <div key={color.id} className="border rounded-xl overflow-hidden">
+              <div key={pieces.id} className="border rounded-xl overflow-hidden">
                 <div
-                  style={{ backgroundColor: color.class }}
-                  className="w-full h-48 sm:w-80"
-                ></div>
+                  className="w-full h-42 sm:w-80"
+                >
+                  <img src={pieces.img} alt={pieces.name} />
+                </div>
                 <div className="p-5">
                   <h5 className="text-xl font-bold tracking-tight text-gray-500">
-                    {color.name}
+                    {pieces.name}
                   </h5>
                   <div
                     className="flex justify-center align-center pt-1"
                     id="toggle"
                   >
                     <ToggleSwitch
-                      checked={coloresSelected.includes(color)}
-                      label="Quiero este color"
+                      checked={piecesSelected.includes(pieces)}
+                      label="Quiero este conjunto"
                       onChange={() => {
-                        handleColorSelect(color);
+                        handleColorSelect(pieces);
                       }}
                     />
                   </div>
@@ -103,10 +98,10 @@ const Colors = () => {
         <Button
           type="submit"
           gradientDuoTone="purpleToPink"
-          onClick={handleSaveColors}
+          onClick={handleSavePieces}
           className="mt-5"
         >
-          Guardar colores
+          Guardar conjunto (s)
         </Button>
       </div>
       <FooterCpt />
@@ -114,4 +109,4 @@ const Colors = () => {
   );
 };
 
-export default Colors;
+export default Pieces;

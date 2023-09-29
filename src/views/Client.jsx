@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useContext  } from "react";
+import { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 //Context
@@ -13,7 +13,6 @@ import NavbarCpt from "../components/NavbarCpt";
 import FooterCpt from "../components/FooterCpt";
 
 export default function Client() {
-
   //Navigate
   const navigate = useNavigate();
 
@@ -27,7 +26,6 @@ export default function Client() {
 
   //Evento para registrar una nueva cuenta.
   const handleClientRegister = (e) => {
-
     const email = emailRef.current.value;
     const pass = passRef.current.value;
     const passTwo = passTwoRef.current.value;
@@ -45,17 +43,19 @@ export default function Client() {
       alert("Por favor, llena todos los campos.");
       e.preventDefault();
     } else {
-      
       const data = {
         email: email,
         pass: pass,
         img: null,
         colors: [],
-        clothes: [],
+        pieces: [],
+        clothes: "",
+        options: "",
+        price: 0,
       };
 
       setData(data);
-     
+
       alert("Cuenta registrada con éxito.");
 
       navigate("/image");
@@ -113,7 +113,11 @@ export default function Client() {
                 <p>Estoy de acuerdo con los términos y condiciones.</p>
               </Label>
             </div>
-            <Button type="submit" onClick={handleClientRegister} gradientDuoTone="purpleToPink">
+            <Button
+              type="submit"
+              onClick={handleClientRegister}
+              gradientDuoTone="purpleToPink"
+            >
               Registrar nueva cuenta
             </Button>
           </form>
