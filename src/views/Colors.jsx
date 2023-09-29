@@ -2,29 +2,44 @@ import { useContext, useState } from "react";
 import UserContext from "../context/User/UserContext";
 
 //Components Flowbite
-import { FileInput, Label, Button } from "flowbite-react";
+import { Button, ToggleSwitch, Card } from "flowbite-react";
 
 //Components
 import NavbarCpt from "../components/NavbarCpt";
 import FooterCpt from "../components/FooterCpt";
 
+//Constants
+import colors from "../constants/colorsData";
+
 const Colors = () => {
+  const [coloresSelected, setColoresSelected] = useState([]);
+
   //Context
-  const { email } = useContext(UserContext);
+  const { email, pass, img } = useContext(UserContext);
 
-  //State
-  const [imageURL, setImageURL] = useState(null);
-
-  //Función para subir imagen temporalmente.
-  const handleUploadImg = (e) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setImageURL(url);
-
-      console.log("URL: ", imageURL);
+  //Funcion para guardar los colores en el estado global.
+  const handleSaveColors = () => {
+    if(coloresSelected.length > 1){
+        alert("Colores guardados.");
+        console.log(coloresSelected);
+    }else {
+        alert("Debes seleccionar al menos 1 color.");
+        console.log(coloresSelected);
     }
+  };
+
+  //Funcion para actualizar el estado de los colores seleccionados.
+  const handleColorSelect = (color) => {
+    const actuallyColors = [...coloresSelected];
+    if (actuallyColors.includes(color)) {
+        actuallyColors.splice(actuallyColors.indexOf(color), 1);
+    } else if (actuallyColors.length < 3) {
+        actuallyColors.push(color);
+    } else {
+        alert("Solo puedes seleccionar 3 colores");
+    }
+    setColoresSelected(actuallyColors);
+    console.log(coloresSelected);
   };
 
   return (
@@ -32,39 +47,47 @@ const Colors = () => {
       <NavbarCpt />
       <div className="flex flex-col items-center">
         <h1 className="font-bold text-xl">
-          Sube tu mejor fotografía, ¡al estilo de Shoppink!
+          ¡Elige tus colores favoritos para crear el mejor outfit!
         </h1>
         <p>Sesión iniciada con: {email}</p>
 
-        <div className="m-10">
-          <div className="max-w-md" id="fileUpload">
-            <div className="mb-2 block">
-              <Label htmlFor="file" value="Subir fotografía" />
-            </div>
-            <FileInput
-              helperText="¡Elige una imagen en donde ilumines tu mejor outfit!"
-              id="file"
-              type="file"
-              accept="image/*"
-              onChange={handleUploadImg}
-            />
-          </div>
+        <div className="flex flex-wrap text-center justify-center align-center gap-5 my-5">
+          {colors.map((color) => {
+            return (
+              <div key={color.id} className="border rounded-xl overflow-hidden">
+                <div
+                  style={{ backgroundColor: color.class }}
+                  className="w-full h-48 sm:w-80"
+                ></div>
+                <div className="p-5">
+                  <h5 className="text-xl font-bold tracking-tight text-gray-500">
+                    {color.name}
+                  </h5>
+                  <div
+                    className="flex justify-center align-center pt-1"
+                    id="toggle"
+                  >
+                    <ToggleSwitch 
+                        checked={coloresSelected.includes(color)} 
+                        label="Quiero este color" 
+                        onChange={() => {
+                            handleColorSelect(color);
+                        }} 
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
-
-        {
-            //Si existe la imagen, la muestra.
-            imageURL && (
-            <div className="mb-10">
-                <img src={imageURL} alt="Imagen subida" className="w-80 border rounded-xl"/>
-            </div>    
-            )
-        }
 
         <Button
           type="submit"
           gradientDuoTone="purpleToPink"
+          onClick={handleSaveColors}
+          className="mt-5"
         >
-          Subir imagen
+          Guardar colores
         </Button>
       </div>
       <FooterCpt />

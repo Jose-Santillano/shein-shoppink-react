@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useContext, use  } from "react";
+import { useRef, useContext  } from "react";
 import { useNavigate } from "react-router-dom";
 
 //Context
@@ -50,6 +50,7 @@ export default function Client() {
         email: email,
         pass: pass,
         img: null,
+        colors: [],
         clothes: [],
       };
 
@@ -57,7 +58,7 @@ export default function Client() {
      
       alert("Cuenta registrada con éxito.");
 
-      navigate("/colors");
+      navigate("/image");
     }
   };
 

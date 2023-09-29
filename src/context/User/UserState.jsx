@@ -8,6 +8,7 @@ const UserState = ({ children }) => {
         email: "example@gmail.com",
         pass: null,
         img: null,
+        colors: [],
         clothes: []
     }
 
@@ -22,6 +23,7 @@ const UserState = ({ children }) => {
             email: state.email,
             pass: state.pass,
             img: state.img,
+            colors: state.colors,
             clothes: state.clothes,
             setData
          }}>

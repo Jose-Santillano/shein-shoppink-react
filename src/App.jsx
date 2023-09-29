@@ -12,6 +12,7 @@ import "./App.css";
 import Home from "./views/Home";
 import Client from "./views/Client";
 import Contact from "./views/Contact";
+import Image from "./views/Image";
 import Colors from "./views/Colors";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/client" element={<Client />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/image" element={<Image />} />
           <Route path="/colors" element={<Colors />} />
         </Routes>
       </BrowserRouter>
