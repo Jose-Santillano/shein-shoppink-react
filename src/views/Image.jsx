@@ -39,7 +39,6 @@ const Colors = () => {
       colors: [],
       pieces: [],
       clothes: "",
-      options: "",
       price: 0
     }
 

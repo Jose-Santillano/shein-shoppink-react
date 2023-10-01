@@ -11,7 +11,6 @@ const UserState = ({ children }) => {
         colors: [],
         pieces: [],
         clothes: "",
-        options: "",
         price: 0
     }
 
@@ -29,7 +28,6 @@ const UserState = ({ children }) => {
             colors: state.colors,
             pieces: state.pieces,
             clothes: state.clothes,
-            options: state.options,
             price: state.price,
             setData
          }}>

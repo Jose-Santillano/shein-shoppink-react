@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import UserContext from "../context/User/UserContext";
+import { useNavigate } from "react-router-dom";
 
 //Components Flowbite
 import { Button, ToggleSwitch } from "flowbite-react";
@@ -12,12 +13,16 @@ import FooterCpt from "../components/FooterCpt";
 import pieces from "../constants/piecesData";
 
 const Pieces = () => {
+
+  //Navigate
+  const navigate = useNavigate();
+
   const [piecesSelected, setPiecesSelected] = useState([]);
 
   //Context
   const { email, pass, img, colors, setData } = useContext(UserContext);
 
-  //Funcion para guardar los colores en el estado global.
+  //Funcion para guardar las piezas en el estado global.
   const handleSavePieces = () => {
     if (piecesSelected.length > 0) {
       const data = {
@@ -27,32 +32,30 @@ const Pieces = () => {
         colors: colors,
         pieces: piecesSelected,
         clothes: "",
-        options: "",
         price: 0,
       };
 
       setData(data);
-      console.log(data);
 
-      alert("Conjuntos guardados.");
+      alert("Conjunto guardado.");
+
+      navigate("/clothes");
     } else {
-      alert("Debes seleccionar al menos 1 conjuntos.");
-      console.log(piecesSelected);
+      alert("Debes seleccionar al menos 1 conjunto.");
     }
   };
 
-  //Funcion para actualizar el estado de los colores seleccionados.
+  //Funcion para actualizar el estado de las piezas colores seleccionados.
   const handleColorSelect = (color) => {
-    const actuallyColors = [...piecesSelected];
-    if (actuallyColors.includes(color)) {
-      actuallyColors.splice(actuallyColors.indexOf(color), 1);
-    } else if (actuallyColors.length < 2) {
-      actuallyColors.push(color);
+    const actuallyPieces = [...piecesSelected];
+    if (actuallyPieces.includes(color)) {
+      actuallyPieces.splice(actuallyPieces.indexOf(color), 1);
+    } else if (actuallyPieces.length < 1) {
+      actuallyPieces.push(color);
     } else {
-      alert("Solo puedes seleccionar 2 conjuntos");
+      alert("Solo puedes seleccionar 1 conjunto.");
     }
-    setPiecesSelected(actuallyColors);
-    console.log(piecesSelected);
+    setPiecesSelected(actuallyPieces);
   };
 
   return (
@@ -101,7 +104,7 @@ const Pieces = () => {
           onClick={handleSavePieces}
           className="mt-5"
         >
-          Guardar conjunto (s)
+          Guardar conjunto
         </Button>
       </div>
       <FooterCpt />

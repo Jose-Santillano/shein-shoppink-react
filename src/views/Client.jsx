@@ -49,8 +49,6 @@ export default function Client() {
         img: null,
         colors: [],
         pieces: [],
-        clothes: "",
-        options: "",
         price: 0,
       };
 

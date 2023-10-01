@@ -126,11 +126,11 @@ const shorts = [
   {
     id: 6,
     name: "Short 6",
-    img: "https://img.ltwebstatic.com/images3_pi/2023/08/29/08/1693318442c85199fb945c817705ddd1018d435e6b_thumbnail_600x.webpp",
+    img: "https://img.ltwebstatic.com/images3_pi/2023/08/29/08/1693318442c85199fb945c817705ddd1018d435e6b_thumbnail_600x.webp",
   },
 ];
 
-const pantalon = [
+const pantalones = [
   {
     id: 1,
     name: "Pantalon",
@@ -196,4 +196,4 @@ const faldas = [
   },
 ];
 
-export { vestidos, camisas, tops, shorts, pantalon, faldas};
+export { vestidos, camisas, tops, shorts, pantalones, faldas};

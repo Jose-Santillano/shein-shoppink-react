@@ -23,7 +23,7 @@ const Colors = () => {
 
   //Funcion para guardar los colores en el estado global.
   const handleSaveColors = () => {
-    if (coloresSelected.length > 1) {
+    if (coloresSelected.length > 0) {
       const data = {
         email: email,
         pass: pass,
@@ -31,12 +31,10 @@ const Colors = () => {
         colors: coloresSelected,
         pieces: [],
         clothes: "",
-        options: "",
         price: 0,
       };
 
       setData(data);
-      console.log(data);
 
       alert("Colores guardados.");
 
@@ -58,7 +56,6 @@ const Colors = () => {
       alert("Solo puedes seleccionar 3 colores");
     }
     setColoresSelected(actuallyColors);
-    console.log(coloresSelected);
   };
 
   return (
