@@ -40,7 +40,7 @@ const Accessories = () => {
 
       alert("Accesorios guardados.");
 
-      //navigate("/checkout");
+      navigate("/checkout");
     } else {
       alert("Debes seleccionar al menos 1 conjunto con accesorios.");
     }
@@ -51,10 +51,10 @@ const Accessories = () => {
     const actuallyAccesories = [...accesoriosSelected];
     if (actuallyAccesories.includes(accessories)) {
         actuallyAccesories.splice(actuallyAccesories.indexOf(accessories), 1);
-    } else if (actuallyAccesories.length < 3) {
+    } else if (actuallyAccesories.length < 1) {
         actuallyAccesories.push(accessories);
     } else {
-      alert("Solo puedes seleccionar 3 colores");
+      alert("Solo puedes seleccionar un kit de accesorios.");
     }
     setAccesoriosSelected(actuallyAccesories);
   };
@@ -73,7 +73,7 @@ const Accessories = () => {
             return (
               <div key={accessories.id} className="border rounded-xl overflow-hidden sm:mx-9 ">
                 <div
-                  className="w-full sm:w-80 bg-gray-300"
+                  className="w-full sm:w-80 bg-gray-100"
                 >
                   <img
                     className="object-cover sm:w-full"
