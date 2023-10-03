@@ -39,6 +39,7 @@ const Colors = () => {
       colors: [],
       pieces: [],
       clothes: "",
+      accesories: "",
       price: 0
     }
 

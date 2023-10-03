@@ -16,6 +16,7 @@ import Image from "./views/Image";
 import Colors from "./views/Colors";
 import Pieces from "./views/Pieces";
 import Clothes from "./views/Clothes";
+import Accessories from "./views/Accessories";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/colors" element={<Colors />} />
           <Route path="/pieces" element={<Pieces />} />
           <Route path="/clothes" element={<Clothes />} />
+          <Route path="/accessories" element={<Accessories />} />
         </Routes>
       </BrowserRouter>
     </UserState>

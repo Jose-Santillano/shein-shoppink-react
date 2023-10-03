@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../context/User/UserContext";
+import { useNavigate } from "react-router-dom";
 
 //Components Flowbite
 import { Button, ToggleSwitch } from "flowbite-react";
@@ -12,6 +13,10 @@ import FooterCpt from "../components/FooterCpt";
 import { vestidos, camisas, tops, shorts, pantalones, faldas  } from "../constants/clothesData";
 
 const Clothes = () => {
+
+  //Navigate
+  const navigate = useNavigate();
+
   const [clothes, setClothes] = useState([]);
 
   const [clothesSelected, setClothesSelected] = useState("");
@@ -76,12 +81,11 @@ const Clothes = () => {
       };
 
       setData(data);
-      console.log(data);
-
       alert("Vestimenta guardada.");
+
+      navigate("/accessories");
     } else {
       alert("Debes seleccionar al menos 1 vestimenta.");
-      console.log(clothesSelected);
     }
   };
 
@@ -96,7 +100,6 @@ const Clothes = () => {
       alert("Solo puedes seleccionar 1 vestimenta");
     }
     setClothesSelected(actuallyClothes);
-    console.log(clothesSelected);
   };
 
   return (
@@ -127,7 +130,7 @@ const Clothes = () => {
                   >
                     <ToggleSwitch
                       checked={clothesSelected.includes(clt)}
-                      label="Quiero este conjunto"
+                      label="Quiero esta vestimenta"
                       onChange={() => {
                         handleClothesSelect(clt);
                       }}

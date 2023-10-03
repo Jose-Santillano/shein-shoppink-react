@@ -32,6 +32,7 @@ const Pieces = () => {
         colors: colors,
         pieces: piecesSelected,
         clothes: "",
+        accesories: "",
         price: 0,
       };
 
