@@ -19,7 +19,7 @@ const Clothes = () => {
 
   const [clothes, setClothes] = useState([]);
 
-  const [clothesSelected, setClothesSelected] = useState("");
+  const [clothesSelected, setClothesSelected] = useState([]);
 
   //Context
   const { email, pass, img, colors, pieces, setData } = useContext(UserContext);
@@ -69,7 +69,7 @@ const Clothes = () => {
   //Funcion para guardar la vestimenta en el estado global.
   const handleSaveClothes = () => {
     console.log(clothesSelected);
-    if (!clothesSelected == "") {
+    if (clothesSelected.length > 0) {
       const data = {
         email: email,
         pass: pass,
@@ -94,7 +94,7 @@ const Clothes = () => {
     const actuallyClothes = [...clothesSelected];
     if (actuallyClothes.includes(clt)) {
         actuallyClothes.splice(actuallyClothes.indexOf(clt), 1);
-    } else if (actuallyClothes.length < 2) {
+    } else if (actuallyClothes.length < 1) {
         actuallyClothes.push(clt);
     } else {
       alert("Solo puedes seleccionar 1 vestimenta");

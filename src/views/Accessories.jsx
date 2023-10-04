@@ -40,7 +40,7 @@ const Accessories = () => {
 
       alert("Accesorios guardados.");
 
-      navigate("/checkout");
+      navigate("/videos");
     } else {
       alert("Debes seleccionar al menos 1 conjunto con accesorios.");
     }

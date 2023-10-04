@@ -68,13 +68,13 @@ const Colors = () => {
         </h1>
         <p>Sesión iniciada con: {email}</p>
 
-        <div className="flex flex-wrap text-center justify-center align-center gap-5 my-5">
+        <div className="flex flex-wrap text-center justify-center align-center gap-8 my-5">
           {colors.map((color) => {
             return (
               <div key={color.id} className="border rounded-xl overflow-hidden">
                 <div
                   style={{ backgroundColor: color.class }}
-                  className="w-full h-48 sm:w-80"
+                  className="w-96 h-48 sm:w-80"
                 ></div>
                 <div className="p-5">
                   <h5 className="text-xl font-bold tracking-tight text-gray-500">

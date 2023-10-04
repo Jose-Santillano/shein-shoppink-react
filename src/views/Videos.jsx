@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import UserContext from "../context/User/UserContext";
+import { useNavigate } from "react-router-dom";
 
 //Constants
 import tiktoks from "../constants/tiktoksData";
@@ -12,11 +13,17 @@ import FooterCpt from "../components/FooterCpt";
 import { Button } from "flowbite-react";
 
 const Videos = () => {
+
+  //Navigate
+  const navigate = useNavigate();
+
   //Context
   const { email } = useContext(UserContext);
 
   const handleContinue = () => {
     alert("Checkout en proceso...");
+
+    navigate("/checkout");
   };
 
   return (
